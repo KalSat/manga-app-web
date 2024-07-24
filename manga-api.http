@@ -1,0 +1,128 @@
+@domian = api.mangacopy.com
+@baseUrl = https://{{domian}}/api/v3
+
+## 1. Manga Collection APIs
+
+### home page
+GET {{baseUrl}}/h5/homeIndex?platform=3
+Content-Type: application/json
+
+
+### rank
+@rankDate = day
+@audienceType = male
+GET {{baseUrl}}/ranks?limit=21&offset=0&date_type={{rankDate}}&audience_type={{audienceType}}&platform=3
+Content-Type: application/json
+
+
+### topics
+GET {{baseUrl}}/topics?limit=21&offset=0&type=1&_update=true&platform=3
+Content-Type: application/json
+
+
+### topic info
+GET {{baseUrl}}/topic/{{topicName}}?platform=3
+Content-Type: application/json
+
+
+### topic content
+GET {{baseUrl}}/topic/{{topicName}}/contents?type=%3$d&limit=21&offset=0&platform=3
+Content-Type: application/json
+
+
+### recommend
+GET {{baseUrl}}/recs?pos=3200102&limit=21&offset=0&platform=3
+Content-Type: application/json
+
+
+### newest
+GET {{baseUrl}}/update/newest?limit=21&offset=0&platform=3
+Content-Type: application/json
+
+
+
+## 2. Manga Explore APIs
+
+### filter
+GET {{baseUrl}}/h5/filter/comic/tags?platform=3
+Content-Type: application/json
+
+
+### sort
+GET {{baseUrl}}/comics?limit=21&offset=%2$d&ordering=%3$s&theme=%4$s&top=%5$s&platform=3
+Content-Type: application/json
+
+
+### finish
+# ordering: "-datetime_updated", "datetime_updated", "-popular", "popular"
+GET {{baseUrl}}/comics?limit=21&offset=0&ordering=popular&top=finish&platform=3
+Content-Type: application/json
+
+
+### author
+GET {{baseUrl}}/comics?limit=21&offset=%2$d&ordering=%3$s&author=%4$s&platform=3
+Content-Type: application/json
+
+
+### caption
+GET {{baseUrl}}/comics?limit=21&offset=%2$d&ordering=%3$s&theme=%4$s&platform=3
+Content-Type: application/json
+
+
+### search
+@query = 1
+# queryType: "", "name", "author", "local"
+@queryType =
+GET {{baseUrl}}/search/comic?limit=21&offset=0&q={{query}}&q_type={{queryType}}&platform=3
+Content-Type: application/json
+
+
+
+## 3. Manga Detail APIs
+
+### book info
+GET {{baseUrl}}/comic2/%2$s?platform=3
+Content-Type: application/json
+
+
+### book user query
+GET {{baseUrl}}/comic2/%2$s/query?platform=3
+Content-Type: application/json
+
+
+### group info
+GET {{baseUrl}}/comic/%2$s/group/%3$s/chapters?limit=100&offset=%4$d&platform=3
+Content-Type: application/json
+
+
+### chapter info
+GET {{baseUrl}}/comic/%2$s/chapter2/%3$s?platform=3
+Content-Type: application/json
+
+
+## 4. User APIs
+
+### login
+POST {{baseUrl}}/login?platform=3
+Content-Type: application/json
+
+
+### user info
+GET {{baseUrl}}/member/info?platform=3
+Content-Type: application/json
+
+
+### history
+GET {{baseUrl}}/member/browse/comics?limit=21&offset=%2$d&platform=3
+
+
+### shelf
+GET {{baseUrl}}/member/collect/comics?limit=21&offset=%2$d&free_type=1&ordering=%3$s&platform=3
+Content-Type: application/json
+
+
+### shelf operate
+POST {{baseUrl}}/member/collect/comic
+Content-Type: application/json
+
+

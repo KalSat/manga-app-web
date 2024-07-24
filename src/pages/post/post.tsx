@@ -1,18 +1,14 @@
 import { useCallback } from 'react'
-import { useQuery } from 'react-query'
-import { getPosts, POST_QUERY_KEYS } from '@data/network/posts'
-import { defaultPostResponse } from '@data/network/posts/response'
-import classes from '@pages/post/post.module.css'
+import { useMutation } from 'react-query'
+import { POST_QUERY_KEYS } from '@data/network/posts/postsApi'
+import { getHomeData } from '@data/network/comicCollection/comicCollectionApi'
 
 const Post = () => {
-  const { isLoading, data, refetch } = useQuery(POST_QUERY_KEYS.posts, getPosts, {
-    enabled: false,
-    initialData: defaultPostResponse,
-  })
+  const { isLoading, data, mutate } = useMutation(POST_QUERY_KEYS.posts, getHomeData)
 
   const handleGetBooks = useCallback(() => {
-    void refetch()
-  }, [refetch])
+    void mutate()
+  }, [mutate])
 
   return (
     <div className="container mx-auto px-6 py-16 pt-28 text-center">
@@ -25,15 +21,19 @@ const Post = () => {
         </button>
         {isLoading ? 'loading...' : null}
       </div>
+      <p>
+        {data && (console.log(''),
+          JSON.stringify(data.banners, null, 2))}
+      </p>
       <ul>
-        {data!.map((post) => (
-          <li key={post.id} className={classes.item}>
-            <h3 className={classes.title}>
-              <b>{post.title}</b> - UserId: {post.userId}
-            </h3>
-            <div className={classes.content}>{post.body}</div>
-          </li>
-        ))}
+        {data?.banners.map((banner) => (
+          banner.type === 1 && (
+            <li key={banner.out_uuid}>
+              <img src={banner.cover} alt={banner.brief} />
+              <p>{banner.comic?.name}</p>
+              <p>{banner.brief}</p>
+            </li>
+          )))}
       </ul>
     </div>
   )
