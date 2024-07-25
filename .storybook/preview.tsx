@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { withThemeFromJSXProvider } from '@storybook/addon-themes'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { createThemeByMode } from '@common/theme'
+import '@/index.css'
 
 const preview: Preview = {
   parameters: {
