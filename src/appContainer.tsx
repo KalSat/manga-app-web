@@ -1,9 +1,8 @@
 import Routes from 'src/global/routes'
-import './appContainer.css'
 
 const AppContainer = () => {
   return (
-    <div id="app">
+    <div id="app" className="flex h-full w-full flex-col items-stretch justify-start overflow-y-auto">
       <Routes />
     </div>
   )
