@@ -1,7 +1,6 @@
 /**
  * API for comic search
  * @see {@link manga-api.http}
- * @example {@link postsApi.ts}
  */
 import httpClient from '@data/network/httpClient'
 
