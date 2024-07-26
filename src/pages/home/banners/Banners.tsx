@@ -2,12 +2,41 @@ import { useState } from 'react'
 import { IconButton, MobileStepper, Paper, Typography, useTheme } from '@mui/material'
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import SwipeableViews from 'react-swipeable-views'
-import { autoPlay } from 'react-swipeable-views-utils'
 import { BannerProps } from '@pages/home/banners/types'
+import { AutoPlaySwipeableViews } from '@pages/home/banners/AutoPlaySwipeableViews'
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
-
+/**
+ * `Banners` component displays a series of banners with auto-play functionality.
+ *
+ * This component uses `react-swipeable-views` for swipeable views and `react-swipeable-views-utils` for auto-play functionality.
+ * It also utilizes Material-UI components for styling and layout.
+ *
+ * Props:
+ * - `banners` (BannerProps[]): An array of banner objects to be displayed.
+ * - `onBannerClick` (function): A callback function to handle banner click events.
+ *
+ * The component filters banners to only include those of type 1, and manages the active step state to control the current banner being displayed.
+ *
+ * The `AutoPlaySwipeableViews` component is used to enable auto-play functionality with a 3000ms interval.
+ *
+ * The `MobileStepper` component is used to provide navigation buttons for manually stepping through the banners.
+ *
+ * The `IconButton` components are used for the next and back buttons, displaying left and right arrows based on the theme direction.
+ *
+ * The `Typography` component is used to display the banner brief text, with styles applied for vertical centering and background opacity.
+ *
+ * The `Box` component is used to render the banner images, replacing the standard `img` tag.
+ *
+ * @component
+ * @example
+ * const banners = [
+ *   { out_uuid: '1', type: 1, cover: 'image1.jpg', brief: 'Banner 1' },
+ *   { out_uuid: '2', type: 1, cover: 'image2.jpg', brief: 'Banner 2' }
+ * ];
+ * const handleBannerClick = (banner) => console.log(banner);
+ *
+ * <Banners banners={banners} onBannerClick={handleBannerClick} />
+ */
 const Banners = ({ banners, onBannerClick }: BannerProps) => {
   banners = banners.filter((it) => it.type === 1)
   const theme = useTheme()
@@ -61,12 +90,12 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
         position="static"
         activeStep={activeStep}
         nextButton={
-          <IconButton onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          <IconButton data-testid="next" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </IconButton>
         }
         backButton={
-          <IconButton onClick={handleBack} disabled={activeStep === 0}>
+          <IconButton data-testid="back" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
           </IconButton>
         }
@@ -74,5 +103,4 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
     </div>
   )
 }
-
 export default Banners
