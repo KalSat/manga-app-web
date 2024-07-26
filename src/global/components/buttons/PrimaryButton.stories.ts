@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PrimaryButton from '@global/components/buttons/PrimaryButton'
 
 const meta = {
-  title: 'Example/PrimaryButton',
+  title: 'GlobalComponent/PrimaryButton',
   component: PrimaryButton,
   tags: [],
   parameters: {

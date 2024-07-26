@@ -9,14 +9,12 @@ export interface DisplayValuePair {
 }
 
 export interface ComicSummary extends NamePathPair {
-  females: NamePathPair[],
-  males: NamePathPair[],
-  author: NamePathPair[],
-  theme: NamePathPair[],
-  img_type: number,
-  cover: string,
-  popular: number,
-  datetime_updated: string,
-  last_chapter_name: string,
-  free_type: DisplayValuePair,
+  author: NamePathPair[]
+  theme: NamePathPair[]
+  cover: string
+  popular: number
+  datetime_updated?: string
+  last_chapter_name?: string
+  img_type?: number
+  free_type?: DisplayValuePair
 }
