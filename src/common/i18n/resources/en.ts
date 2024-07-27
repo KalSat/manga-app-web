@@ -1,8 +1,13 @@
 export default {
   translation: {
-    'Welcome to React': 'Welcome to React and react-i18next',
     common: {
-      Hello: 'Hello',
+      loading: 'Loading...',
+    },
+    home: {
+      recommended: 'Recommended',
+      popular: 'Popular',
+      newest: 'Newest',
+      finished: 'Finished',
     },
   },
 }

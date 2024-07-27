@@ -38,7 +38,7 @@ const ComicCollection = ({ title, comics, onComicClick, refresh, onMoreClick }: 
   }
 
   return (
-    <div className="comic-collection">
+    <div className="comic-collection w-full px-4 py-2">
       <div className="header flex items-center justify-between">
         <Typography variant="h6">{title}</Typography>
         <div className="actions flex">
