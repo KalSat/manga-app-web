@@ -68,3 +68,172 @@ export const mockComicSummary3: ComicSummary = {
   cover: 'https://hi77-overseas.mangafunb.fun/wunengdenainai/cover/1651207608.jpg.328x422.jpg',
   popular: 2340187,
 }
+
+export const mockComics1 = [mockComicSummary1, mockComicSummary2, mockComicSummary3]
+
+export const mockComics2: ComicSummary[] = [
+  {
+    name: '少年的深淵',
+    path_word: 'shaoniandeshenyuan',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: '峰浪了(峰浪りょう)',
+        path_word: '峰浪了(峰浪りょう)',
+      },
+    ],
+    theme: [
+      {
+        name: '愛情',
+        path_word: '愛情',
+      },
+      {
+        name: '生活',
+        path_word: '生活',
+      },
+    ],
+    cover: 'https://hi77-overseas.mangafunb.fun/shaoniandeshenyuan/cover/1694086183.jpg.328x422.jpg',
+    popular: 13612796,
+    datetime_updated: '2024-07-26',
+  },
+  {
+    name: '薄櫻鬼公式本畫集合集',
+    path_word: 'baoyingguigongshibenhuajiheji',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: 'IDEA FACTORY',
+        path_word: 'IDEA FACTORY',
+      },
+    ],
+    theme: [
+      {
+        name: '愛情',
+        path_word: '愛情',
+      },
+      {
+        name: '历史',
+        path_word: '历史',
+      },
+    ],
+    cover: 'https://sb.mangafunb.fun/b/baoyingguigongshibenhuajiheji/cover/1721844342.jpg.328x422.jpg',
+    popular: 1412,
+    datetime_updated: '2024-07-26',
+  },
+  {
+    name: '制服date',
+    path_word: 'zhifudate',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: '黑咲练导',
+        path_word: '黑咲练导',
+      },
+    ],
+    theme: [
+      {
+        name: '愛情',
+        path_word: '愛情',
+      },
+      {
+        name: '校园',
+        path_word: '校园',
+      },
+    ],
+    cover: 'https://hi77-overseas.mangafunb.fun/zhifudate/cover/1691865205.jpg.328x422.jpg',
+    popular: 63444,
+    datetime_updated: '2024-07-26',
+  },
+  {
+    name: 'X之力量崛起',
+    path_word: 'xzhililiangjueqi',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: 'Marvel Comics',
+        path_word: 'Marvel Comics',
+      },
+    ],
+    theme: [
+      {
+        name: '科幻',
+        path_word: '科幻',
+      },
+    ],
+    cover: 'https://sx.mangafunb.fun/x/xzhililiangjueqi/cover/1710063134.jpg.328x422.jpg',
+    popular: 1165,
+    datetime_updated: '2024-07-26',
+  },
+  {
+    name: '不要欺負我、長瀞同學',
+    path_word: 'buyaoqifuwochangjingtongxue',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: '774nanash',
+        path_word: '774nanash',
+      },
+    ],
+    theme: [
+      {
+        name: '愛情',
+        path_word: '愛情',
+      },
+      {
+        name: '校园',
+        path_word: '校园',
+      },
+    ],
+    cover: 'https://hi77-overseas.mangafunb.fun/buyaoqifuwochangjingtongxue/cover/1653222659.png.328x422.jpg',
+    popular: 5588515,
+    datetime_updated: '2024-07-25',
+  },
+  {
+    name: '與狸貓和狐狸的鄉村生活',
+    path_word: 'yulimaohehulidexiangcunshenghuo',
+    free_type: {
+      display: '免費',
+      value: 1,
+    },
+
+    author: [
+      {
+        name: 'くみちょう',
+        path_word: 'くみちょう',
+      },
+    ],
+    theme: [
+      {
+        name: '歡樂向',
+        path_word: '歡樂向',
+      },
+      {
+        name: '奇幻',
+        path_word: '奇幻',
+      },
+    ],
+    cover: 'https://hi77-overseas.mangafunb.fun/yulimaohehulidexiangcunshenghuo/cover/1681906634.jpg.328x422.jpg',
+    popular: 35624,
+    datetime_updated: '2024-07-25',
+  },
+]
