@@ -25,7 +25,8 @@ const ComicCover = ({ comic, showPopular = true, onClick }: ComicCoverProps) => 
         <div className="absolute flex h-full w-full items-center justify-center bg-gray-200 bg-opacity-50"></div>
         <img src={comic.cover} alt={comic.name} className="absolute h-full w-full object-cover" />
         <Typography
-          className="absolute bottom-0 w-full bg-black bg-opacity-40 px-1 text-end text-[11px] leading-4 text-white"
+          variant="caption"
+          className="absolute bottom-0 w-full bg-black bg-opacity-40 px-1 text-end text-white"
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -41,15 +42,20 @@ const ComicCover = ({ comic, showPopular = true, onClick }: ComicCoverProps) => 
         {showPopular && (
           <div className="flex h-5 flex-row items-center">
             <LocalFireDepartment className="w-3.5 text-orange-500" />
-            <Typography className="text-[10px] text-orange-500">{comic.popular}</Typography>
+            <Typography className="text-[11px] text-orange-500">
+              {Intl.NumberFormat('en-US', {
+                notation: 'compact',
+                maximumFractionDigits: 1,
+              }).format(comic.popular)}
+            </Typography>
           </div>
         )}
         {!isEmpty(comic.datetime_updated) && (
-          <Typography className="text-[10px] leading-5 text-gray-500">{comic.datetime_updated}</Typography>
+          <Typography className="text-[11px] leading-5 text-gray-500">{comic.datetime_updated}</Typography>
         )}
       </div>
       <Typography
-        variant="caption"
+        variant="subtitle2"
         className="mx-1 mb-0.5"
         sx={{
           overflow: 'hidden',

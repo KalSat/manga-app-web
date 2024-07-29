@@ -62,7 +62,7 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
-        interval={3000}
+        interval={6000}
       >
         {banners.map((banner, index) => (
           <div key={banner.out_uuid}>
@@ -74,12 +74,17 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
                 className="bg-paper relative flex aspect-[60/29] cursor-pointer items-center justify-center"
               >
                 <img src={banner.cover} alt={banner.brief} className="block h-full w-full max-w-full overflow-hidden" />
-                <Typography
-                  variant="body2"
-                  className="absolute bottom-0 w-full bg-black bg-opacity-50 px-3 py-1 text-white"
-                >
-                  {banner.brief}
-                </Typography>
+                <div className="absolute bottom-0 flex w-full flex-row flex-wrap items-baseline justify-end bg-black bg-opacity-50 px-3">
+                  <Typography variant="body2" className="text-white">
+                    {banner.brief}
+                  </Typography>
+                  <div className="flex-1" />
+                  {banner.comic?.name && (
+                    <Typography variant="caption" className="self-end text-white">
+                      {`—— ${banner.comic?.name}`}
+                    </Typography>
+                  )}
+                </div>
               </Paper>
             ) : null}
           </div>
