@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import Banners from '@pages/home/banners/Banners'
+import Banners, { BannerProps } from '@pages/home/banners/Banners'
 import { mockBanners } from '@pages/home/banners/__mocks__/mockData'
-import { BannerProps } from '@pages/home/banners/types'
 
 const meta = {
   title: 'Example/Banners',

@@ -2,8 +2,14 @@ import { useState } from 'react'
 import { IconButton, MobileStepper, Paper, Typography, useTheme } from '@mui/material'
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import { BannerProps } from '@pages/home/banners/types'
 import { AutoPlaySwipeableViews } from '@pages/home/banners/AutoPlaySwipeableViews'
+import { Banner } from '@data/network/comicCollection/types'
+import { NamePathPair } from '@data/model/comic'
+
+export interface BannerProps {
+  banners: Banner[]
+  onBannerClick: (banner: NamePathPair) => void
+}
 
 /**
  * `Banners` component displays a series of banners with auto-play functionality.
@@ -38,7 +44,7 @@ import { AutoPlaySwipeableViews } from '@pages/home/banners/AutoPlaySwipeableVie
  * <Banners banners={banners} onBannerClick={handleBannerClick} />
  */
 const Banners = ({ banners, onBannerClick }: BannerProps) => {
-  banners = banners.filter((it) => it.type === 1)
+  banners = banners.filter((it) => it.type === 1 && it.comic)
   const theme = useTheme()
   const [activeStep, setActiveStep] = useState(0)
   const maxSteps = banners.length
@@ -70,7 +76,7 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
               <Paper
                 square
                 elevation={0}
-                onClick={() => onBannerClick(banner)}
+                onClick={() => banner.comic && onBannerClick(banner.comic)}
                 className="bg-paper relative flex aspect-[60/29] cursor-pointer items-center justify-center"
               >
                 <img src={banner.cover} alt={banner.brief} className="block h-full w-full max-w-full overflow-hidden" />

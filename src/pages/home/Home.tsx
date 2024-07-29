@@ -5,10 +5,13 @@ import Banners from '@pages/home/banners/Banners'
 import { getHomeData } from '@data/network/comicCollection/comicCollectionApi'
 import ComicCollection from '@global/components/ComicCollection'
 import useTrans from '@common/i18n/useTrans'
+import useComicNavigator from '@pages/home/useComicNavigator'
+import { ComicSummary } from '@data/model/comic'
 
 const Home = () => {
   const { isLoading, data: homeData } = useQuery(['homeData'], getHomeData)
   const { t } = useTrans()
+  const { navigateToComic } = useComicNavigator()
 
   return (
     <div className="flex flex-1 flex-col items-start justify-start">
@@ -22,23 +25,32 @@ const Home = () => {
       )}
       {homeData && (
         <>
-          <Banners banners={homeData.banners} onBannerClick={noop} />
+          <Banners banners={homeData.banners} onBannerClick={navigateToComic} />
           <ComicCollection
             title={t('home.recommended')}
             comics={homeData.recComics.list.map((it) => it.comic)}
-            onComicClick={noop}
+            onComicClick={navigateToComic}
+            refresh={() => Promise.resolve([] as ComicSummary[])}
+            onMoreClick={noop}
           />
           <ComicCollection
             title={t('home.popular')}
             comics={homeData.hotComics.map((it) => it.comic)}
-            onComicClick={noop}
+            onComicClick={navigateToComic}
           />
           <ComicCollection
             title={t('home.newest')}
             comics={homeData.newComics.map((it) => it.comic)}
-            onComicClick={noop}
+            onComicClick={navigateToComic}
+            onMoreClick={noop}
           />
-          <ComicCollection title={t('home.finished')} comics={homeData.finishComics.list} onComicClick={noop} />
+          <ComicCollection
+            title={t('home.finished')}
+            comics={homeData.finishComics.list}
+            onComicClick={noop}
+            refresh={() => Promise.resolve([] as ComicSummary[])}
+            onMoreClick={noop}
+          />
         </>
       )}
     </div>

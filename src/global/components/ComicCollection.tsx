@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { IconButton, Typography } from '@mui/material'
 import RefreshIcon from '@mui/icons-material/Refresh'
-import { ArrowForwardIos } from '@mui/icons-material'
+import { ChevronRight } from '@mui/icons-material'
 import ComicCover from '@global/components/ComicCover'
-import { ComicSummary } from '@data/model/comic'
+import { ComicSummary, NamePathPair } from '@data/model/comic'
 
 export interface ComicCollectionProps {
   title: string
   comics: ComicSummary[]
-  onComicClick: (comic: ComicSummary) => void
+  onComicClick: (comic: NamePathPair) => void
   refresh?: () => Promise<ComicSummary[]>
   onMoreClick?: () => void
 }
@@ -49,7 +49,7 @@ const ComicCollection = ({ title, comics, onComicClick, refresh, onMoreClick }: 
           )}
           {onMoreClick && (
             <IconButton data-testid="more" className="ms-2" onClick={onMoreClick}>
-              <ArrowForwardIos />
+              <ChevronRight />
             </IconButton>
           )}
         </div>
@@ -58,7 +58,7 @@ const ComicCollection = ({ title, comics, onComicClick, refresh, onMoreClick }: 
         <div className="grid grid-cols-3 gap-4">
           {comicList.map((comic, i) => (
             <div className="comic-item" key={comic.path_word}>
-              <ComicCover data-testid={`comic${i}`} comic={comic} onClick={() => onComicClick(comic)} />
+              <ComicCover data-testid={`comic${i}`} comic={comic} onClick={onComicClick} />
             </div>
           ))}
         </div>
