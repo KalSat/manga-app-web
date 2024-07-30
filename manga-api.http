@@ -41,7 +41,7 @@ Content-Type: application/json
 
 
 
-## 2. Manga Explore APIs
+## 2. Manga Exploration APIs
 
 ### filter
 GET {{baseUrl}}/h5/filter/comic/tags?platform=3
@@ -49,6 +49,8 @@ Content-Type: application/json
 
 
 ### sort
+# ordering: "-datetime_updated", "datetime_updated", "-popular", "popular"
+# top: "japan", "korea", "west", "finish"
 GET {{baseUrl}}/comics?limit=21&offset=%2$d&ordering=%3$s&theme=%4$s&top=%5$s&platform=3
 Content-Type: application/json
 

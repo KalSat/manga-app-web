@@ -6,7 +6,7 @@ import { getHomeData, getNewestComics, getRecommendComics } from '@data/network/
 import ComicCollection from '@global/components/ComicCollection'
 import useTrans from '@common/i18n/useTrans'
 import useComicNavigator from '@pages/home/useComicNavigator'
-import { ComicSummary } from '@data/model/comic'
+import { getFinishedComics, getLatestUpdatedComics } from '@data/network/comicExploration/comicExplorationApi'
 
 const Home = () => {
   const { isLoading, data: homeData } = useQuery(['homeData'], getHomeData)
@@ -37,6 +37,7 @@ const Home = () => {
             title={t('home.popular')}
             comics={homeData.hotComics.map((it) => it.comic)}
             onComicClick={navigateToComic}
+            refresh={(offset, limit) => getLatestUpdatedComics(offset, limit).then((res) => res.list)}
           />
           <ComicCollection
             title={t('home.newest')}
@@ -49,7 +50,7 @@ const Home = () => {
             title={t('home.finished')}
             comics={homeData.finishComics.list}
             onComicClick={noop}
-            refresh={() => Promise.resolve([] as ComicSummary[])}
+            refresh={(offset, limit) => getFinishedComics(offset, limit).then((res) => res.list)}
             onMoreClick={noop}
           />
         </>

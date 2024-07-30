@@ -5,7 +5,7 @@ export default {
     },
     home: {
       recommended: 'Recommended',
-      popular: 'Popular',
+      popular: 'Latest Updated',
       newest: 'Newest',
       finished: 'Finished',
     },
