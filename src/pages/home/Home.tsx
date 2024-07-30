@@ -2,7 +2,7 @@ import { noop } from 'lodash'
 import { useQuery } from 'react-query'
 import { CircularProgress, Typography } from '@mui/material'
 import Banners from '@pages/home/banners/Banners'
-import { getHomeData } from '@data/network/comicCollection/comicCollectionApi'
+import { getHomeData, getNewestComics, getRecommendComics } from '@data/network/comicCollection/comicCollectionApi'
 import ComicCollection from '@global/components/ComicCollection'
 import useTrans from '@common/i18n/useTrans'
 import useComicNavigator from '@pages/home/useComicNavigator'
@@ -30,7 +30,7 @@ const Home = () => {
             title={t('home.recommended')}
             comics={homeData.recComics.list.map((it) => it.comic)}
             onComicClick={navigateToComic}
-            refresh={() => Promise.resolve([] as ComicSummary[])}
+            refresh={(offset, limit) => getRecommendComics(offset, limit).then((res) => res.list.map((it) => it.comic))}
             onMoreClick={noop}
           />
           <ComicCollection
@@ -42,6 +42,7 @@ const Home = () => {
             title={t('home.newest')}
             comics={homeData.newComics.map((it) => it.comic)}
             onComicClick={navigateToComic}
+            refresh={(offset, limit) => getNewestComics(offset, limit).then((res) => res.list.map((it) => it.comic))}
             onMoreClick={noop}
           />
           <ComicCollection

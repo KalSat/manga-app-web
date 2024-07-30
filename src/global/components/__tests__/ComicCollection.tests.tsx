@@ -1,9 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { useMutation, UseMutationResult } from 'react-query'
 import ComicCollection from '@global/components/ComicCollection'
 import { mockComics1, mockComics2 } from '@global/components/__mocks__/mockData'
 import ComicCover from '@global/components/ComicCover'
 
 jest.mock('@global/components/ComicCover')
+jest.mock('react-query')
 
 /**
  * ### Prompt
@@ -32,6 +34,12 @@ describe('ComicCollection', () => {
         </div>
       )
     })
+    jest.mocked(useMutation).mockImplementation(
+      (_mutationKey, mutationFn) =>
+        ({
+          mutateAsync: async () => await mutationFn!(undefined),
+        }) as unknown as UseMutationResult,
+    )
   })
 
   it('should render comic collection correctly', () => {
@@ -89,7 +97,7 @@ describe('ComicCollection', () => {
     fireEvent.click(screen.getByTestId('refresh'))
 
     // then
-    expect(mockRefresh).toHaveBeenCalled()
+    expect(mockRefresh).toHaveBeenCalledWith(mockComics.length, mockComics.length)
     const newComic = await screen.findByTestId('comic5')
     expect(newComic).toBeInTheDocument()
   })

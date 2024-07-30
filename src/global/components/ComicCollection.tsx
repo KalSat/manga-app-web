@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { IconButton, Typography } from '@mui/material'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import { ChevronRight } from '@mui/icons-material'
+import { useMutation } from 'react-query'
 import ComicCover from '@global/components/ComicCover'
 import { ComicSummary, NamePathPair } from '@data/model/comic'
 
@@ -9,7 +10,7 @@ export interface ComicCollectionProps {
   title: string
   comics: ComicSummary[]
   onComicClick: (comic: NamePathPair) => void
-  refresh?: () => Promise<ComicSummary[]>
+  refresh?: (offset: number, limit: number) => Promise<ComicSummary[]>
   onMoreClick?: () => void
 }
 
@@ -29,11 +30,18 @@ export interface ComicCollectionProps {
  */
 const ComicCollection = ({ title, comics, onComicClick, refresh, onMoreClick }: ComicCollectionProps) => {
   const [comicList, setComicList] = useState(comics)
+  const [offset, setOffset] = useState(comics.length)
+  const limit = comics.length
+
+  const { mutateAsync } = useMutation([title, offset, limit], async () =>
+    refresh ? await refresh(offset, limit) : comicList,
+  )
 
   const handleRefresh = async () => {
     if (refresh) {
-      const refreshedComics = await refresh()
+      const refreshedComics = await mutateAsync()
       setComicList(refreshedComics)
+      setOffset(offset + refreshedComics.length)
     }
   }
 
