@@ -62,7 +62,7 @@ const Banners = ({ banners, onBannerClick }: BannerProps) => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}

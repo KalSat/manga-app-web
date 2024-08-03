@@ -23,7 +23,7 @@ const Home = () => {
       ) : !homeData ? (
         <ServerErrorView onRetry={refetch} />
       ) : (
-        <div className="flex flex-1 flex-col items-start justify-start">
+        <div className="flex flex-1 flex-col items-stretch justify-start">
           <Banners banners={homeData.banners} onBannerClick={navigateToComic} />
           <ComicCollection
             title={t('home.recommended')}
