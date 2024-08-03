@@ -37,9 +37,4 @@ export const getComicsByAuthor = (offset: number, limit: number, author: string,
   getComics(offset, limit, ordering, undefined, undefined, author)
 
 export const searchComic = (query: string, type: string, offset: number, limit: number) =>
-  httpClient.get('/search/comic', {
-    q: query,
-    q_type: type,
-    offset,
-    limit,
-  })
+  httpClient.get<PagedResults<ComicSummary>>('/search/comic', { q: query, q_type: type, offset, limit })

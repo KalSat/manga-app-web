@@ -1,5 +1,6 @@
 export interface NamePathPair {
   name: string
+  alias?: string
   path_word: string
 }
 

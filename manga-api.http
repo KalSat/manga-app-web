@@ -72,11 +72,13 @@ Content-Type: application/json
 
 
 ### search
-@query = 1
+@query = e
 # queryType: "", "name", "author", "local"
-@queryType =
-GET {{baseUrl}}/search/comic?limit=21&offset=0&q={{query}}&q_type={{queryType}}&platform=3
+@queryType = name
+GET {{baseUrl}}/search/comic?limit=21&offset=0&q={{query}}&q_type={{queryType}}&platform=1
 Content-Type: application/json
+Version:          2.2.0
+Platform:         3
 
 
 
