@@ -4,6 +4,7 @@ export default {
       loading: 'Loading...',
     },
     home: {
+      search: 'Search...',
       recommended: 'Recommended',
       popular: 'Latest Updated',
       newest: 'Newest',

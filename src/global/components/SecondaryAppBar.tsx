@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import { ArrowBack } from '@mui/icons-material'
 
-export const SecondaryAppBar = ({ title }: { title: string }) => {
+const SecondaryAppBar = ({ title }: { title: string }) => {
   const navigateTo = useNavigate()
 
   return (
@@ -25,3 +25,4 @@ export const SecondaryAppBar = ({ title }: { title: string }) => {
     </AppBar>
   )
 }
+export default SecondaryAppBar

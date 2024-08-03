@@ -1,6 +1,6 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { Paths } from './types'
-import Home from '@pages/home/Home'
+import Landing from '@pages/landing/Landing'
 import RecommendedComics from '@pages/collections/RecommendedComics'
 import LatestUpdatedComics from '@pages/collections/LatestUpdatedComics'
 import NewestComics from '@pages/collections/NewestComics'
@@ -16,8 +16,8 @@ const Router = () => (
   <Routes>
     <Route path={Paths.ROOT} element={<Layout />}>
       <Route path="*" element={<Navigate to={Paths.ROOT} relative="route" />} />
-      <Route index element={<Navigate to={Paths.HOME} relative="route" />} />
-      <Route path={Paths.HOME} element={<Home />} />
+      <Route index element={<Navigate to={Paths.LANDING} relative="route" />} />
+      <Route path={Paths.LANDING} element={<Landing />} />
       <Route path={Paths.RECOMMENDED_COMICS} element={<RecommendedComics />} />
       <Route path={Paths.LATEST_UPDATED_COMICS} element={<LatestUpdatedComics />} />
       <Route path={Paths.NEWEST_COMICS} element={<NewestComics />} />

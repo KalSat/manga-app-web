@@ -1,6 +1,6 @@
 export enum Paths {
   ROOT = '/',
-  HOME = '/home',
+  LANDING = '/landing',
   RECOMMENDED_COMICS = '/recommendedComics',
   LATEST_UPDATED_COMICS = '/latestUpdatedComics',
   NEWEST_COMICS = '/newestComics',
