@@ -1,27 +1,27 @@
 import ComicGrid from '@global/components/ComicGrid'
-import { RecommendedComic } from '@data/network/comicCollection/types'
 import useComicNavigator from '@pages/home/useComicNavigator'
 import { ComicCoverProps } from '@global/components/ComicCover'
-import { getRecommendComics } from '@data/network/comicCollection/comicCollectionApi'
 import useTrans from '@common/i18n/useTrans'
 import { SecondaryAppBar } from '@global/components/SecondaryAppBar'
+import { getLatestUpdatedComics } from '@data/network/comicExploration/comicExplorationApi'
+import { ComicSummary } from '@data/model/comic'
 
-const RecommendedComics = () => {
+const LatestUpdatedComics = () => {
   const { t } = useTrans()
   const { navigateToComic } = useComicNavigator()
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-start">
-      <SecondaryAppBar title={t('home.recommended')} />
+      <SecondaryAppBar title={t('home.popular')} />
       <div className="flex-1 overflow-y-auto">
-        <ComicGrid<RecommendedComic>
-          queryKey="RecommendedComics"
-          queryFn={({ offset, limit }) => getRecommendComics(offset, limit)}
+        <ComicGrid<ComicSummary>
+          queryKey="LatestUpdatedComics"
+          queryFn={({ offset, limit }) => getLatestUpdatedComics(offset, limit)}
           pageSize={21}
-          toComicCoverPropsFn={(it): ComicCoverProps => ({ comic: it.comic, onClick: navigateToComic })}
+          toComicCoverPropsFn={(it): ComicCoverProps => ({ comic: it, onClick: navigateToComic })}
         />
       </div>
     </div>
   )
 }
-export default RecommendedComics
+export default LatestUpdatedComics

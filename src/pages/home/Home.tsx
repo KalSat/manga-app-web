@@ -1,4 +1,3 @@
-import { noop } from 'lodash'
 import { useQuery } from 'react-query'
 import { CircularProgress, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -41,20 +40,21 @@ const Home = () => {
             comics={homeData.hotComics.map((it) => it.comic)}
             onComicClick={navigateToComic}
             refresh={(offset, limit) => getLatestUpdatedComics(offset, limit).then((res) => res.list)}
+            onMoreClick={() => navigateTo(Paths.LATEST_UPDATED_COMICS)}
           />
           <ComicCollection
             title={t('home.newest')}
             comics={homeData.newComics.map((it) => it.comic)}
             onComicClick={navigateToComic}
             refresh={(offset, limit) => getNewestComics(offset, limit).then((res) => res.list.map((it) => it.comic))}
-            onMoreClick={noop}
+            onMoreClick={() => navigateTo(Paths.NEWEST_COMICS)}
           />
           <ComicCollection
             title={t('home.finished')}
             comics={homeData.finishComics.list}
-            onComicClick={noop}
+            onComicClick={navigateToComic}
             refresh={(offset, limit) => getFinishedComics(offset, limit).then((res) => res.list)}
-            onMoreClick={noop}
+            onMoreClick={() => navigateTo(Paths.FINISHED_COMICS)}
           />
         </>
       )}
