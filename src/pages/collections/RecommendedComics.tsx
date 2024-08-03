@@ -7,7 +7,7 @@ import useComicNavigator from '@pages/home/useComicNavigator'
 import { ComicCoverProps } from '@global/components/ComicCover'
 import { getRecommendComics } from '@data/network/comicCollection/comicCollectionApi'
 import useTrans from '@common/i18n/useTrans'
-import { HOME_PATH } from '@global/routes/routePaths'
+import { Paths } from '@global/routes/types'
 
 const RecommendedComics = () => {
   const { t } = useTrans()
@@ -24,7 +24,7 @@ const RecommendedComics = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={() => navigateTo(HOME_PATH)}
+            onClick={() => navigateTo(Paths.HOME)}
           >
             <ArrowBack />
           </IconButton>

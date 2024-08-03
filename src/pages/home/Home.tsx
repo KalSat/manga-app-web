@@ -8,7 +8,7 @@ import ComicCollection from '@global/components/ComicCollection'
 import useTrans from '@common/i18n/useTrans'
 import useComicNavigator from '@pages/home/useComicNavigator'
 import { getFinishedComics, getLatestUpdatedComics } from '@data/network/comicExploration/comicExplorationApi'
-import { RECOMMENDED_COMICS_PATH } from '@global/routes/routePaths'
+import { Paths } from '@global/routes/types'
 
 const Home = () => {
   const { isLoading, data: homeData } = useQuery(['homeData'], getHomeData)
@@ -34,7 +34,7 @@ const Home = () => {
             comics={homeData.recComics.list.map((it) => it.comic)}
             onComicClick={navigateToComic}
             refresh={(offset, limit) => getRecommendComics(offset, limit).then((res) => res.list.map((it) => it.comic))}
-            onMoreClick={() => navigateTo(RECOMMENDED_COMICS_PATH)}
+            onMoreClick={() => navigateTo(Paths.RECOMMENDED_COMICS)}
           />
           <ComicCollection
             title={t('home.popular')}

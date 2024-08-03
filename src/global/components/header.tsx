@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import viteLogo from '/vite.svg'
-import { HOME_PATH } from '@global/routes/routePaths'
+import { Paths } from '@global/routes/types'
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
               <li>
                 <Link
                   className="block rounded bg-blue-700 py-2 pl-3 pr-4 text-white lg:bg-transparent lg:p-0 lg:text-blue-700 dark:text-white"
-                  to={HOME_PATH}
+                  to={Paths.HOME}
                 >
                   Home
                 </Link>
