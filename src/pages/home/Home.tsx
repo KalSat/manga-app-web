@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query'
-import { CircularProgress, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import Banners from '@pages/home/banners/Banners'
 import { getHomeData, getNewestComics, getRecommendComics } from '@data/network/comicCollection/comicCollectionApi'
@@ -8,25 +7,23 @@ import useTrans from '@common/i18n/useTrans'
 import useComicNavigator from '@pages/home/useComicNavigator'
 import { getFinishedComics, getLatestUpdatedComics } from '@data/network/comicExploration/comicExplorationApi'
 import { Paths } from '@global/routes/types'
+import LoadingView from '@global/components/LoadingView'
+import ServerErrorView from '@global/components/ServerErrorView'
 
 const Home = () => {
-  const { isLoading, data: homeData } = useQuery(['homeData'], getHomeData)
+  const { isLoading, data: homeData, refetch } = useQuery(['homeData'], getHomeData)
   const { t } = useTrans()
   const { navigateToComic } = useComicNavigator()
   const navigateTo = useNavigate()
 
   return (
-    <div className="flex flex-1 flex-col items-start justify-start">
-      {isLoading && (
-        <div className="flex w-full flex-1 flex-col items-center justify-center">
-          <CircularProgress />
-          <Typography variant="subtitle1" className="mt-3">
-            {t('common.loading')}
-          </Typography>
-        </div>
-      )}
-      {homeData && (
-        <>
+    <>
+      {isLoading ? (
+        <LoadingView />
+      ) : !homeData ? (
+        <ServerErrorView onRetry={refetch} />
+      ) : (
+        <div className="flex flex-1 flex-col items-start justify-start">
           <Banners banners={homeData.banners} onBannerClick={navigateToComic} />
           <ComicCollection
             title={t('home.recommended')}
@@ -56,9 +53,9 @@ const Home = () => {
             refresh={(offset, limit) => getFinishedComics(offset, limit).then((res) => res.list)}
             onMoreClick={() => navigateTo(Paths.FINISHED_COMICS)}
           />
-        </>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 

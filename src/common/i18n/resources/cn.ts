@@ -2,6 +2,8 @@ export default {
   translation: {
     common: {
       loading: '加载中...',
+      retry: '重试',
+      serverError: '糟糕！出错了，请稍后重试',
     },
     home: {
       search: '搜索...',
