@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from 'react-query'
 import { useEffect, useRef } from 'react'
 import { CircularProgress, Typography } from '@mui/material'
-import ComicCover, { ComicCoverProps } from '@global/components/ComicCover'
+import ComicCover, { ComicCoverProps } from '@global/components/comic/ComicCover'
 import { PagedResults } from '@data/network/types'
 import useTrans from '@common/i18n/useTrans'
 

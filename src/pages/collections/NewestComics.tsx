@@ -1,6 +1,6 @@
-import ComicGrid from '@global/components/ComicGrid'
+import ComicGrid from '@global/components/comic/ComicGrid'
 import useComicNavigator from '@pages/home/useComicNavigator'
-import { ComicCoverProps } from '@global/components/ComicCover'
+import { ComicCoverProps } from '@global/components/comic/ComicCover'
 import useTrans from '@common/i18n/useTrans'
 import { SecondaryAppBar } from '@global/components/SecondaryAppBar'
 import { getNewestComics } from '@data/network/comicCollection/comicCollectionApi'

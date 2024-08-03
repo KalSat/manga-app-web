@@ -3,7 +3,7 @@ import { IconButton, Typography } from '@mui/material'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import { ChevronRight } from '@mui/icons-material'
 import { useMutation } from 'react-query'
-import ComicCover from '@global/components/ComicCover'
+import ComicCover from '@global/components/comic/ComicCover'
 import { ComicSummary, NamePathPair } from '@data/model/comic'
 
 export interface ComicCollectionProps {

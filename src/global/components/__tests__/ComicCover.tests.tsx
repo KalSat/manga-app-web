@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import ComicCover from '@global/components/ComicCover'
+import ComicCover from '@global/components/comic/ComicCover'
 import { ComicSummary } from '@data/model/comic'
 
 describe('ComicCover', () => {

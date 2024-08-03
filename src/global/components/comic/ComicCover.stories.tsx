@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import ComicCover, { ComicCoverProps } from '@global/components/ComicCover'
+import ComicCover, { ComicCoverProps } from '@global/components/comic/ComicCover'
 import { mockComicSummary1, mockComicSummary2, mockComicSummary3 } from '@global/components/__mocks__/mockData'
 
 const meta = {

@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useMutation, UseMutationResult } from 'react-query'
-import ComicCollection from '@global/components/ComicCollection'
+import ComicCollection from '@global/components/comic/ComicCollection'
 import { mockComics1, mockComics2 } from '@global/components/__mocks__/mockData'
-import ComicCover from '@global/components/ComicCover'
+import ComicCover from '@global/components/comic/ComicCover'
 
-jest.mock('@global/components/ComicCover')
+jest.mock('@global/components/comic/ComicCover')
 jest.mock('react-query')
 
 /**
