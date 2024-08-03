@@ -1,17 +1,20 @@
 import { noop } from 'lodash'
 import { useQuery } from 'react-query'
 import { CircularProgress, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import Banners from '@pages/home/banners/Banners'
 import { getHomeData, getNewestComics, getRecommendComics } from '@data/network/comicCollection/comicCollectionApi'
 import ComicCollection from '@global/components/ComicCollection'
 import useTrans from '@common/i18n/useTrans'
 import useComicNavigator from '@pages/home/useComicNavigator'
 import { getFinishedComics, getLatestUpdatedComics } from '@data/network/comicExploration/comicExplorationApi'
+import { RECOMMENDED_COMICS_PATH } from '@global/routes/routePaths'
 
 const Home = () => {
   const { isLoading, data: homeData } = useQuery(['homeData'], getHomeData)
   const { t } = useTrans()
   const { navigateToComic } = useComicNavigator()
+  const navigateTo = useNavigate()
 
   return (
     <div className="flex flex-1 flex-col items-start justify-start">
@@ -31,7 +34,7 @@ const Home = () => {
             comics={homeData.recComics.list.map((it) => it.comic)}
             onComicClick={navigateToComic}
             refresh={(offset, limit) => getRecommendComics(offset, limit).then((res) => res.list.map((it) => it.comic))}
-            onMoreClick={noop}
+            onMoreClick={() => navigateTo(RECOMMENDED_COMICS_PATH)}
           />
           <ComicCollection
             title={t('home.popular')}

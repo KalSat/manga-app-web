@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import viteLogo from '/vite.svg'
-import { HOME_PATH } from '@/global/routes/routePaths'
+import { HOME_PATH } from '@global/routes/routePaths'
 
 const Header = () => {
   return (
