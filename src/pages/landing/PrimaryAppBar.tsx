@@ -2,10 +2,13 @@ import { AppBar, IconButton, InputBase, Toolbar, Typography } from '@mui/materia
 import { AccountCircle, AutoStories } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search'
 import { noop } from 'lodash'
+import { useNavigate } from 'react-router-dom'
 import useTrans from '@common/i18n/useTrans'
+import { Paths } from '@global/routes/types'
 
 const PrimaryAppBar = () => {
   const { t } = useTrans()
+  const navigateTo = useNavigate()
 
   return (
     <AppBar position="static">
@@ -26,7 +29,10 @@ const PrimaryAppBar = () => {
             MANGA
           </Typography>
         </div>
-        <div className="relative flex-1 rounded-full bg-white bg-opacity-15 hover:bg-opacity-25">
+        <div
+          className="relative flex-1 rounded-full bg-white bg-opacity-15 hover:bg-opacity-25"
+          onClick={() => navigateTo(Paths.SEARCH)}
+        >
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2">
             <SearchIcon />
           </div>

@@ -12,5 +12,12 @@ export default {
       newest: '全新上架',
       finished: '已完结',
     },
+    search: {
+      search: '搜索',
+      all: '全部',
+      name: '名称',
+      author: '作者',
+      translator: '汉化组',
+    },
   },
 }

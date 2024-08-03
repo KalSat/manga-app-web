@@ -7,7 +7,7 @@ import LoadingView from '@global/components/LoadingView'
 import ServerErrorView from '@global/components/ServerErrorView'
 
 export interface ComicGridProps<T> {
-  queryKey: string
+  queryKey: string | string[]
   queryFn: (pageParam: PageParam) => Promise<PagedResults<T>>
   pageSize: number
   toComicCoverPropsFn: (data: T) => ComicCoverProps

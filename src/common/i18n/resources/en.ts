@@ -12,5 +12,12 @@ export default {
       newest: 'Newest',
       finished: 'Finished',
     },
+    search: {
+      search: 'Search',
+      all: 'All',
+      name: 'Name',
+      author: 'Author',
+      translator: 'Translator',
+    },
   },
 }

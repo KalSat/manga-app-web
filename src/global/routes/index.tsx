@@ -5,6 +5,7 @@ import RecommendedComics from '@pages/collections/RecommendedComics'
 import LatestUpdatedComics from '@pages/collections/LatestUpdatedComics'
 import NewestComics from '@pages/collections/NewestComics'
 import FinishedComics from '@pages/collections/FinishedComics'
+import Search from '@pages/search/Search'
 
 export const Layout = () => (
   <>
@@ -22,6 +23,7 @@ const Router = () => (
       <Route path={Paths.LATEST_UPDATED_COMICS} element={<LatestUpdatedComics />} />
       <Route path={Paths.NEWEST_COMICS} element={<NewestComics />} />
       <Route path={Paths.FINISHED_COMICS} element={<FinishedComics />} />
+      <Route path={Paths.SEARCH} element={<Search />} />
     </Route>
   </Routes>
 )

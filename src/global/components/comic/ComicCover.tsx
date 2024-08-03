@@ -26,14 +26,8 @@ const ComicCover = ({ comic, showPopular = true, onClick }: ComicCoverProps) => 
         <img src={comic.cover} alt={comic.name} className="absolute h-full w-full object-cover" />
         <Typography
           variant="caption"
-          className="absolute bottom-0 w-full bg-black bg-opacity-40 px-1 text-end text-white"
-          sx={{
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: '1',
-            WebkitBoxOrient: 'vertical',
-          }}
+          className="absolute bottom-0 w-full bg-gradient-to-t from-gray-700 to-transparent px-1 pt-1 text-end text-white"
+          noWrap={true}
         >
           {comic.author.map((author) => author.name).join('/')}
         </Typography>
