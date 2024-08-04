@@ -5,9 +5,10 @@ import Scaffold from '@global/components/Scaffold'
 import SecondaryAppBar from '@global/components/SecondaryAppBar'
 import useTrans from '@common/i18n/useTrans'
 import RadioButtonGroup from '@global/components/RadioButtonGroup'
-import ComicGrid from '@global/components/comic/ComicGrid'
 import { searchComic } from '@data/network/comicExploration/comicExplorationApi'
 import useComicNavigator from '@pages/home/useComicNavigator'
+import ComicList from '@global/components/comic/ComicList'
+import { ComicSummary } from '@data/model/comic'
 
 const Search = () => {
   const { t } = useTrans()
@@ -48,14 +49,18 @@ const Search = () => {
         />
       }
     >
-      <div className="flex h-full w-full flex-col items-center justify-start gap-2 px-4 py-2">
-        <RadioButtonGroup options={searchTypes} selected={type} onChange={setType} />
+      <div className="flex h-full w-full flex-col items-center justify-start gap-2 py-2">
+        <RadioButtonGroup className="px-4" options={searchTypes} selected={type} onChange={setType} />
         {!!query && (
-          <ComicGrid
+          <ComicList<ComicSummary>
             queryKey={[query, type.path_word]}
             queryFn={({ offset, limit }) => searchComic(query, type.path_word, offset, limit)}
             pageSize={20}
-            toComicCoverPropsFn={(it) => ({ comic: it, onClick: navigateToComic })}
+            toComicProfilePropsFn={(it) => ({
+              comic: it,
+              onComicClick: navigateToComic,
+              onTagClick: () => {},
+            })}
           />
         )}
       </div>

@@ -3,14 +3,19 @@ import { Check } from '@mui/icons-material'
 import { NamePathPair } from '@data/model/comic'
 
 export interface RadioButtonGroupProps {
+  className?: string
   options: NamePathPair[]
   selected?: NamePathPair
   onChange?: (selected: NamePathPair) => void
 }
 
-const RadioButtonGroup = ({ options, selected, onChange }: RadioButtonGroupProps) => {
+const RadioButtonGroup = ({ className, options, selected, onChange }: RadioButtonGroupProps) => {
   return (
-    <ButtonGroup className="w-full rounded-full" variant="outlined" aria-label="Basic button group">
+    <ButtonGroup
+      className={'w-full rounded-full' + (className ? ` ${className}` : '')}
+      variant="outlined"
+      aria-label="Basic button group"
+    >
       {options.map((option, i) => {
         const isSelected = selected?.path_word === option.path_word
         return (
